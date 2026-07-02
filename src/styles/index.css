@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0b0b0b;
+    color: #fafafa;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0b0b0b;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c1121f, #f57c00, #ffd54f);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ffd54f, #f57c00, #c1121f);
+  }
+}
+
+/* Glassmorphism Helper Classes */
+.glass-panel {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-glow {
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 213, 79, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.4s ease;
+}
+
+.glass-panel-glow:hover {
+  border-color: rgba(193, 18, 31, 0.4);
+  box-shadow: 0 0 25px rgba(193, 18, 31, 0.25);
+}
+
+/* Pattachitra Border Patterns and Geometries */
+.pattachitra-border-top {
+  background-image: radial-gradient(circle at 50% 50%, #ffd54f 2px, transparent 3px);
+  background-size: 10px 10px;
+  height: 4px;
+}
+
+.pattachitra-pattern {
+  background-color: #070707;
+  background-image: 
+    radial-gradient(rgba(255, 213, 79, 0.09) 1.5px, transparent 0),
+    radial-gradient(rgba(193, 18, 31, 0.09) 1.5px, transparent 0),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0 A 40 40 0 0 0 0 40 A 40 40 0 0 0 40 80 A 40 40 0 0 0 80 40 A 40 40 0 0 0 40 0 Z M40 10 A 30 30 0 0 1 70 40 A 30 30 0 0 1 40 70 A 30 30 0 0 1 10 40 A 30 30 0 0 1 40 10 Z' fill='%23ffd54f' fill-opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 24px 24px, 24px 24px, 160px 160px;
+  background-position: 0 0, 12px 12px, 0 0;
+  background-attachment: scroll, scroll, fixed;
+}
+
+/* Reels Style Snap Scroll */
+.shorts-container {
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.shorts-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.short-card {
+  height: calc(100vh - 80px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+@media (max-width: 768px) {
+  .shorts-container {
+    height: calc(100vh - 64px);
+  }
+  .short-card {
+    height: calc(100vh - 64px);
+  }
+}
+
+/* Custom cursor and glowing dots */
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #ffd54f;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #c1121f;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-active .cursor-follower {
+  width: 60px;
+  height: 60px;
+  border-color: #c1121f;
+  background-color: rgba(193, 18, 31, 0.1);
+}
+
+.cursor-active .cursor-dot {
+  background-color: #ffd54f;
+}
+
+/* Grid overlay pattern */
+.sambalpuri-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
